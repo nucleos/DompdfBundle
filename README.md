@@ -139,6 +139,74 @@ The dompdf wrapper dispatches events to conveniently get the inner dompdf instan
 
 See [Symfony Events and Event Listeners](https://symfony.com/doc/current/event_dispatcher.html) for more info.
 
+#### Dom PDF use
+
+Use listeners if you want to hook to DomPDF page_script and/or callbacks.
+
+Simple implementation with twig rendering, add page number to the footer with `page_script`:
+
+DomPDF documentation: [Page Script](https://github.com/dompdf/dompdf/wiki/Usage#page_script)
+```php
+namespace App\EventListener;
+
+use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
+
+final class DomPdfListener {
+    #[AsEventListener(event: 'dompdf.stream')]
+    public function onDompdfOutput($event): void
+    {
+        // Get DOMPDF instance
+        $domPdf      = $event->getPdf();
+        // Get canvas instance
+        $canvas      = $domPdf->getCanvas();
+
+        $canvas->page_script(function ($pageNumber, $pageCount, $canvas, $fontMetrics) {
+            $pageWidth  = $canvas->get_width();
+            $pageHeight = $canvas->get_height();
+
+            // page number
+            $text  = "Page $pageNumber of $pageCount";
+            $font  = $fontMetrics->getFont('Helvetica');
+            $size  = 10;
+            $width = $fontMetrics->getTextWidth($text, $font, $size);
+            $canvas->text($pageWidth - $width - 20, $pageHeight - 20, $text, $font, $size);
+        });
+    }
+```
+`callback` example to add a watermark (can be achieved with `page_script` as well):
+DomPDF documentation: [Callbacks](https://github.com/dompdf/dompdf/wiki/Usage#callbacks)
+```php
+    [...]
+    $domPdf      = $event->getPdf();
+    $canvas      = $domPdf->getCanvas();
+
+    $domPdf->setCallbacks(
+        [
+            [
+                'event' => 'begin_page_render',
+                'f'     => function ($frame, $canvas, $fontMetrics) {
+                    // watermark
+                    $text  = 'WaterMak text';
+                    $font  = $fontMetrics->getFont('Helvetica', 'bold');
+                    $size  = 48;
+                    $width = $fontMetrics->getTextWidth($text, $font, $size);
+                    $x     = ($canvas->get_width() - $width) / 2;
+                    $y     = ($canvas->get_height() - $size) / 2;
+                    $canvas->page_text($x, $y, $text, $font, $size, [0.5, 0.5, 0.5, "alpha" => 0.4], 20, 0, -45);
+                },
+            ],
+        ]
+    );
+    [...]
+```
+There are 6 events available, see documentation for more details:
+- `begin_page_reflow`
+- `begin_frame`
+- `end_frame`
+- `begin_page_render`
+- `end_page_render`
+- `end_document`
+
 ## License
 
 This bundle is under the [MIT license](LICENSE.md).
