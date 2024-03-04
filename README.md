@@ -196,7 +196,7 @@ DomPDF documentation: [Callbacks](https://github.com/dompdf/dompdf/wiki/Usage#ca
         ],
     ]);
 ```
-There are 6 events available, see documentation for more details:
+There are 6 events available, see [documentation](https://github.com/dompdf/dompdf/wiki/Usage#callbacks) for more details:
 - `begin_page_reflow`
 - `begin_frame`
 - `end_frame`
