@@ -180,24 +180,21 @@ DomPDF documentation: [Callbacks](https://github.com/dompdf/dompdf/wiki/Usage#ca
     $domPdf      = $event->getPdf();
     $canvas      = $domPdf->getCanvas();
 
-    $domPdf->setCallbacks(
+    $domPdf->setCallbacks([
         [
-            [
-                'event' => 'begin_page_render',
-                'f'     => function ($frame, $canvas, $fontMetrics) {
-                    // watermark
-                    $text  = 'WaterMak text';
-                    $font  = $fontMetrics->getFont('Helvetica', 'bold');
-                    $size  = 48;
-                    $width = $fontMetrics->getTextWidth($text, $font, $size);
-                    $x     = ($canvas->get_width() - $width) / 2;
-                    $y     = ($canvas->get_height() - $size) / 2;
-                    $canvas->page_text($x, $y, $text, $font, $size, [0.5, 0.5, 0.5, "alpha" => 0.4], 20, 0, -45);
-                },
-            ],
-        ]
-    );
-    [...]
+            'event' => 'begin_page_render',
+            'f'     => function ($frame, $canvas, $fontMetrics) {
+                // watermark
+                $text  = 'WaterMak text';
+                $font  = $fontMetrics->getFont('Helvetica', 'bold');
+                $size  = 48;
+                $width = $fontMetrics->getTextWidth($text, $font, $size);
+                $x     = ($canvas->get_width() - $width) / 2;
+                $y     = ($canvas->get_height() - $size) / 2;
+                $canvas->page_text($x, $y, $text, $font, $size, [0.5, 0.5, 0.5, "alpha" => 0.4], 20, 0, -45);
+            },
+        ],
+    ]);
 ```
 There are 6 events available, see documentation for more details:
 - `begin_page_reflow`
