@@ -2,27 +2,29 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 4.2.0 - TBD
+## 4.2.0 - 2024-05-22
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [4.2.0](https://github.com/nucleos/NucleosDompdfBundle/milestone/11)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 4.2.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **3**
+- Total contributors: **3**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [550: Adding compatibility with dompdf 3.0](https://github.com/nucleos/NucleosDompdfBundle/pull/550) thanks to @ThomasLandauer
+ - [547: Update dependency psalm/plugin-phpunit to ^0.19](https://github.com/nucleos/NucleosDompdfBundle/pull/547) thanks to @renovate[bot]
 
-### Fixed
+#### Bug
 
-- Nothing.
+ - [544: Allow the use of callback in events](https://github.com/nucleos/NucleosDompdfBundle/pull/544) thanks to @kl3sk
 
 ## 4.1.0 - 2023-12-21
 
