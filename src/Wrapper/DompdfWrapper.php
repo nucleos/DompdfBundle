@@ -25,7 +25,7 @@ final class DompdfWrapper implements DompdfWrapperInterface
 
     private ?EventDispatcherInterface $eventDispatcher;
 
-    public function __construct(DompdfFactoryInterface $dompdfFactory, EventDispatcherInterface $eventDispatcher = null)
+    public function __construct(DompdfFactoryInterface $dompdfFactory, ?EventDispatcherInterface $eventDispatcher = null)
     {
         $this->dompdfFactory   = $dompdfFactory;
         $this->eventDispatcher = $eventDispatcher;
