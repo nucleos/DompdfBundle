@@ -38,17 +38,17 @@
     "require": {
         "php": "^8.1",
         "dompdf/dompdf": "^1.0.0 || ^2.0.0 || ^3.0.0",
-        "symfony/config": "^6.4 || ^7.0 || ^7.1",
-        "symfony/dependency-injection": "^6.4 || ^7.0 || ^7.1",
+        "symfony/config": "^6.4 || ^7.0",
+        "symfony/dependency-injection": "^6.4 || ^7.0",
         "symfony/event-dispatcher-contracts": "^1.1 || ^2.0 || ^3.0",
-        "symfony/expression-language": "^6.4 || ^7.0 || ^7.1",
-        "symfony/framework-bundle": "^6.4 || ^7.0 || ^7.1",
-        "symfony/http-foundation": "^6.4 || ^7.0 || ^7.1",
-        "symfony/http-kernel": "^6.4 || ^7.0 || ^7.1"
+        "symfony/expression-language": "^6.4 || ^7.0",
+        "symfony/framework-bundle": "^6.4 || ^7.0",
+        "symfony/http-foundation": "^6.4 || ^7.0",
+        "symfony/http-kernel": "^6.4 || ^7.0"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.0.1",
-        "symfony/browser-kit": "^6.4 || ^7.0 || ^7.1"
+        "symfony/browser-kit": "^6.4 || ^7.0"
     },
     "suggest": {
         "symfony/event-dispatcher": "If you need to modify the PDF rendering"
