@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.16.0@2897ba636551a8cb61601cc26f6ccfbba6c36591">
-  <file src="src/DependencyInjection/Configuration.php">
-    <UndefinedMethod>
-      <code>children</code>
-    </UndefinedMethod>
-  </file>
-</files>
