@@ -1,5 +1,7 @@
 <?php
 
+use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
+
 $header = <<<EOF
 (c) Christian Gripp <mail@core23.de>
 
@@ -11,7 +13,8 @@ $finder = PhpCsFixer\Finder::create()
     ->in([ __DIR__.'/src',  __DIR__.'/tests'])
 ;
 
-$config = (new PhpCsFixer\Config())
+return (new PhpCsFixer\Config())
+    ->setParallelConfig(ParallelConfigFactory::detect())
     ->setRiskyAllowed(true)
     ->setRules([
         '@Symfony' => true,
@@ -41,12 +44,10 @@ $config = (new PhpCsFixer\Config())
         ],
         'static_lambda' => true,
         'global_namespace_import' => [
-           'import_classes' => true,
-           'import_constants' => false,
-           'import_functions' => false,
+            'import_classes' => true,
+            'import_constants' => false,
+            'import_functions' => false,
         ],
     ])
-    ->setFinder($finder)
-;
+    ->setFinder($finder);
 
-return $config;
