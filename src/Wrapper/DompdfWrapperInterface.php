@@ -14,9 +14,6 @@ namespace Nucleos\DompdfBundle\Wrapper;
 use Nucleos\DompdfBundle\Exception\PdfException;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
-/**
- * @method StreamedResponse getStreamResponse(string $html, string $filename, array $options = [])
- */
 interface DompdfWrapperInterface
 {
     /**
